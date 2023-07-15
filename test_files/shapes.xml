@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by SBML API 2.0(a17.0) -->
+<!-- A demo of 3 shapes, really bad performance due to 30x30x30 grid rendering -->
+<sbml level="2" version="1" 
+	xmlns="http://www.sbml.org/sbml/level2" 
+	xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
+	<model id="Shapes_demo">
+
+		<annotation>
+			<cell4d:XMLversion>2</cell4d:XMLversion>
+			<cell4d:environmentVariables>
+				<cell4d:X_DIM>30</cell4d:X_DIM>
+				<cell4d:Y_DIM>30</cell4d:Y_DIM>
+				<cell4d:Z_DIM>30</cell4d:Z_DIM>
+				<cell4d:GEOMETRY>cube</cell4d:GEOMETRY>
+				<cell4d:TIMESCALE>1.0e-7</cell4d:TIMESCALE>
+				<cell4d:SPACESCALE>1.5e-7</cell4d:SPACESCALE>
+				<cell4d:INACCESSIBLE_SPACE_PERCENT>10</cell4d:INACCESSIBLE_SPACE_PERCENT>
+				<cell4d:MAX_CYCLES>1000</cell4d:MAX_CYCLES>
+			</cell4d:environmentVariables>
+
+			<cell4d:listOfAnnotationSpeciesTypes>
+				<cell4d:speciesType id="molecule" speciesTypeName="molecule" speciesMoleculeType="PROTEIN">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="cube"/>
+						<cell4d:compartment id="diamond"/>
+						<cell4d:compartment id="sphere"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:diffusionConstant value="5.0e-12"/>
+					<cell4d:displayProperties colourLabel="dm" redValue="130" greenValue="0" blueValue="130" membraneDisplay="true"/>
+				</cell4d:speciesType>
+			</cell4d:listOfAnnotationSpeciesTypes>
+		</annotation>
+
+		<!-- Standard SBML starts here -->
+		<listOfCompartments>
+			<compartment id="cube" name="009" outside="c3">
+				<annotation>
+					<!-- <cell4d:compartmentProperties type="membrane" axis="x" face="back" membraneEmissionRate="2e2" absorptionRate="1e4"/> -->
+					<cell4d:latticePointDefinition type="solid" x1="26" y1="1" z1="5" x2="28" y2="3" z2="7"/>
+				</annotation>
+			</compartment>
+			<compartment id="diamond" name="002" outside="c3">
+				<annotation>
+					<!-- <cell4d:compartmentProperties type="membrane" axis="x" face="back" membraneEmissionRate="2e2" absorptionRate="1e4"/> -->
+					<cell4d:latticePointDefinition type="solid" x1="5" y1="8" z1="5" x2="5" y2="8" z2="5"/>
+					<cell4d:latticePointDefinition type="solid" x1="4" y1="7" z1="6" x2="6" y2="9" z2="6"/>
+					<cell4d:latticePointDefinition type="solid" x1="3" y1="6" z1="7" x2="7" y2="10" z2="7"/>
+					<cell4d:latticePointDefinition type="solid" x1="2" y1="5" z1="8" x2="8" y2="11" z2="8"/>
+					<cell4d:latticePointDefinition type="solid" x1="3" y1="6" z1="9" x2="7" y2="10" z2="9"/>
+					<cell4d:latticePointDefinition type="solid" x1="4" y1="7" z1="10" x2="6" y2="9" z2="10"/>
+					<cell4d:latticePointDefinition type="solid" x1="5" y1="8" z1="11" x2="5" y2="8" z2="11"/>
+				</annotation>
+			</compartment>
+			<compartment id="sphere" name="003" outside="c3">
+				<annotation>
+					<!-- <cell4d:compartmentProperties type="membrane" axis="x" face="back" membraneEmissionRate="2e2" absorptionRate="1e4"/> -->
+					<cell4d:latticePointDefinition type="solid" x1="22" y1="20" z1="13" x2="22" y2="20" z2="13"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="20" y1="19" z1="14" x2="24" y2="21" z2="14"/>
+					<cell4d:latticePointDefinition type="solid" x1="21" y1="18" z1="14" x2="23" y2="22" z2="14"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="19" y1="19" z1="15" x2="25" y2="21" z2="15"/>
+					<cell4d:latticePointDefinition type="solid" x1="20" y1="18" z1="15" x2="24" y2="22" z2="15"/>
+					<cell4d:latticePointDefinition type="solid" x1="21" y1="17" z1="15" x2="23" y2="23" z2="15"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="19" y1="18" z1="16" x2="25" y2="22" z2="16"/>
+					<cell4d:latticePointDefinition type="solid" x1="20" y1="17" z1="16" x2="24" y2="23" z2="16"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="18" y1="20" z1="17" x2="26" y2="20" z2="17"/>
+					<cell4d:latticePointDefinition type="solid" x1="19" y1="18" z1="17" x2="25" y2="22" z2="17"/>
+					<cell4d:latticePointDefinition type="solid" x1="20" y1="17" z1="17" x2="24" y2="23" z2="17"/>
+					<cell4d:latticePointDefinition type="solid" x1="22" y1="16" z1="17" x2="22" y2="24" z2="17"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="19" y1="18" z1="18" x2="25" y2="22" z2="18"/>
+					<cell4d:latticePointDefinition type="solid" x1="20" y1="17" z1="18" x2="24" y2="23" z2="18"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="19" y1="19" z1="19" x2="25" y2="21" z2="19"/>
+					<cell4d:latticePointDefinition type="solid" x1="20" y1="18" z1="19" x2="24" y2="22" z2="19"/>
+					<cell4d:latticePointDefinition type="solid" x1="21" y1="17" z1="19" x2="23" y2="23" z2="19"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="20" y1="19" z1="20" x2="24" y2="21" z2="20"/>
+					<cell4d:latticePointDefinition type="solid" x1="21" y1="18" z1="20" x2="23" y2="22" z2="20"/>
+
+					<cell4d:latticePointDefinition type="solid" x1="22" y1="20" z1="21" x2="22" y2="20" z2="21"/>
+				</annotation>
+			</compartment>
+			<compartment id="background" name="999" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="50" y2="50" z2="50"/>
+				</annotation>
+			</compartment>
+		</listOfCompartments>
+
+		<listOfSpecies>
+			<species id="CEACAM_mono_phos" name="CEACAM_monomer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="diamond" initial="0.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="molecule"/>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:displayProperties colourLabel="dm" redValue="130" greenValue="0" blueValue="130" membraneDisplay="true"/>
+				</annotation>
+			</species>
+			<species id="CEACAM_mono_unphos" name="CEACAM_monomer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="cube" initial="0.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="molecule"/>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:displayProperties colourLabel="red" redValue="240" greenValue="0" blueValue="0" membraneDisplay="true"/>
+				</annotation>
+			</species>
+			<species id="CEACAM_mono_unphos" name="CEACAM_monomer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="sphere" initial="0.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="molecule"/>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="200" blueValue="0" membraneDisplay="true"/>
+				</annotation>
+			</species>
+		</listOfSpecies>
+	</model>
+</sbml>

@@ -1,0 +1,12 @@
+
+*.o
+*.dep
+.*
+!.gitignore
+cmake-build-debug/*
+
+
+vscode/
+
+gmon\.out
+/CellApp

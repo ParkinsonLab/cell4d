@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml level="2" version="1"
+    xmlns="http://www.sbml.org/sbml/level2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sbml.org/sbml/level2 sbml.xsd"
+    xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
+
+
+    <!-- Modified 07/11/2021 DC -->
+    <!-- From-scratch version of cascade, with a series of state change reactions culminating in dissociation of dimer into monomers -->
+
+
+    <model id="Cascade">
+        <annotation>
+			<cell4d:XMLversion>2</cell4d:XMLversion>
+            <cell4d:environmentVariables>
+                <cell4d:X_DIM>5</cell4d:X_DIM>
+                <cell4d:Y_DIM>5</cell4d:Y_DIM>
+                <cell4d:Z_DIM>5</cell4d:Z_DIM>
+                <cell4d:GEOMETRY>cube</cell4d:GEOMETRY>
+                <cell4d:TIMESCALE>1.0e-6</cell4d:TIMESCALE>
+                <cell4d:SPACESCALE>1e-7</cell4d:SPACESCALE>
+                <cell4d:INACCESSIBLE_SPACE_PERCENT>0</cell4d:INACCESSIBLE_SPACE_PERCENT>
+                <cell4d:MAX_CYCLES>10000</cell4d:MAX_CYCLES>
+            </cell4d:environmentVariables>
+
+            <cell4d:listOfAnnotationSpeciesTypes>
+                <cell4d:speciesType id="A" speciesTypeName="A_particle" speciesMoleculeType="PROTEIN">
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="origin"/>
+                        <cell4d:compartment id="cell"/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:diffusionConstant value="5.0e-12"/>
+                    <cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="255"/>
+                </cell4d:speciesType>
+
+                <cell4d:speciesType id="B" speciesTypeName="B_particle" speciesMoleculeType="PROTEIN">
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="cell"/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:listOfBindingSites>
+                        <cell4d:bindingSite id="P">
+                            <cell4d:listOfPossibleStates>
+                                <cell4d:state id="Phosphorylated" value="P"/>
+                                <cell4d:state id="UnPhosphorylated" value="U"/>
+                            </cell4d:listOfPossibleStates>
+                        </cell4d:bindingSite>
+                    </cell4d:listOfBindingSites>
+                    <cell4d:diffusionConstant value="5.0e-12"/>
+                    <cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
+                </cell4d:speciesType>
+
+                <cell4d:speciesType id="C" speciesTypeName="C_particle" speciesMoleculeType="PROTEIN">
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="cell"/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:listOfBindingSites>
+                        <cell4d:bindingSite id="P">
+                            <cell4d:listOfPossibleStates>
+                                <cell4d:state id="Phosphorylated" value="P"/>
+                                <cell4d:state id="UnPhosphorylated" value="U"/>
+                            </cell4d:listOfPossibleStates>
+                        </cell4d:bindingSite>
+                    </cell4d:listOfBindingSites>
+                    <cell4d:diffusionConstant value="5.0e-12"/>
+                    <cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
+                </cell4d:speciesType>
+
+                <cell4d:speciesType id="D" speciesTypeName="D_particle" speciesMoleculeType="PROTEIN">
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="cell"/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:listOfBindingSites>
+                        <cell4d:bindingSite id="fusion"/>
+                    </cell4d:listOfBindingSites>
+                    <cell4d:diffusionConstant value="5.0e-12"/>
+                    <cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
+                </cell4d:speciesType>
+                <cell4d:speciesType id="product" speciesTypeName="product" speciesMoleculeType="SIMPLE_MOLECULE">
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="cell"/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:diffusionConstant value="1.0e-10"/>
+                    <cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
+                </cell4d:speciesType>
+            </cell4d:listOfAnnotationSpeciesTypes>
+
+        </annotation>
+
+        <!-- Standard SBML starts here -->
+
+        <listOfCompartments>
+            <compartment id="origin" name="001" outside="default">
+                <annotation>
+                    <cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="0" y2="0" z2="0"/>
+                </annotation>
+            </compartment>
+            <compartment id="cell" name="999" outside="default">
+                <annotation>
+                    <cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="5" y2="5" z2="5"/>
+                </annotation>
+            </compartment>
+        </listOfCompartments>
+
+        <listOfSpecies>
+            <species id="A" name="A_particle" compartment="default">
+                <annotation>
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="origin" initial="5" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+                        <cell4d:compartment id="cell" initial="0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:listOfSpeciesTypes>
+                        <cell4d:speciesType id="A"/>
+                    </cell4d:listOfSpeciesTypes>
+                </annotation>
+            </species>
+            <species id="B" name="B_particle" compartment="default">
+                <annotation>
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="cell" initial="20" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:listOfSpeciesTypes>
+                        <cell4d:speciesType id="B">
+                            <cell4d:bindingSite id="P" state="U" binding=""/>
+                        </cell4d:speciesType>
+                    </cell4d:listOfSpeciesTypes>
+                </annotation>
+            </species>
+            <species id="C" name="C_particle" compartment="default">
+                <annotation>
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="cell" initial="200" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:listOfSpeciesTypes>
+                        <cell4d:speciesType id="C">
+                            <cell4d:bindingSite id="P" state="U" binding=""/>
+                        </cell4d:speciesType>
+                    </cell4d:listOfSpeciesTypes>
+                </annotation>
+            </species>
+            <species id="complex" name="complex" compartment="default">
+                <annotation>
+                    <cell4d:listOfValidCompartments>
+                        <cell4d:compartment id="cell" initial="200" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+                    </cell4d:listOfValidCompartments>
+                    <cell4d:listOfSpeciesTypes>
+                        <cell4d:speciesType id="D">
+                            <cell4d:bindingSite id="fusion" state="" binding="bound"/>
+                        </cell4d:speciesType>
+                        <cell4d:speciesType id="product"/>
+                    </cell4d:listOfSpeciesTypes>
+                </annotation>
+            </species>
+        </listOfSpecies>
+
+        <listOfReactions>
+            <reaction id="B_active" reversible="false">
+                <annotation>
+                    <cell4d:reactionType>Interaction</cell4d:reactionType>
+                </annotation>
+                <listOfReactants>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="A"/>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="B">
+                                    <cell4d:bindingSite id="P" state="U" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <speciesReference species="ignored"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="A"/>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="B">
+                                    <cell4d:bindingSite id="P" state="P" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <speciesReference species="ignored"/>
+                </listOfProducts>
+
+                <listOfModifiers>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="empty"/>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <modifierSpeciesReference species="ignored"/>
+                </listOfModifiers>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <ci>Elementary Rate Law</ci>
+                    </math>
+                    <listOfParameters>
+                        <parameter id="r1kp" name="Kforward" value="3e8"/>
+                        <parameter id="r1ka" name="Kreverse" value="0"/>
+                    </listOfParameters>
+                </kineticLaw>
+            </reaction>
+
+            <reaction id="C_active" reversible="false">
+                <annotation>
+                    <cell4d:reactionType>Interaction</cell4d:reactionType>
+                </annotation>
+                <listOfReactants>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="B">
+                                    <cell4d:bindingSite id="P" state="P" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="C">
+                                    <cell4d:bindingSite id="P" state="U" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <speciesReference species="ignored"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="B">
+                                    <cell4d:bindingSite id="P" state="P" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="C">
+                                    <cell4d:bindingSite id="P" state="P" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <speciesReference species="ignored"/>
+                </listOfProducts>
+
+                <listOfModifiers>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="empty"/>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <modifierSpeciesReference species="ignored"/>
+                </listOfModifiers>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <ci>Elementary Rate Law</ci>
+                    </math>
+                    <listOfParameters>
+                        <parameter id="r1kp" name="Kforward" value="3e8"/>
+                        <parameter id="r1ka" name="Kreverse" value="0"/>
+                    </listOfParameters>
+                </kineticLaw>
+            </reaction>
+
+            <reaction id="D_final" reversible="false">
+                <annotation>
+                    <cell4d:reactionType>Interaction</cell4d:reactionType>
+                </annotation>
+                <listOfReactants>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="C">
+                                    <cell4d:bindingSite id="P" state="P" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="D">
+                                    <cell4d:bindingSite id="fusion" state="" binding="bound"/>
+                                </cell4d:speciesType>
+                                <cell4d:speciesType id="product"/>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <speciesReference species="ignored"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="C">
+                                    <cell4d:bindingSite id="P" state="P" binding=""/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="D">
+                                    <cell4d:bindingSite id="fusion" state="" binding="unbound"/>
+                                </cell4d:speciesType>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="product"/>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+
+                    </annotation>
+                    <speciesReference species="ignored"/>
+                </listOfProducts>
+
+                <listOfModifiers>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="empty"/>
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <modifierSpeciesReference species="ignored"/>
+                </listOfModifiers>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <ci>Elementary Rate Law</ci>
+                    </math>
+                    <listOfParameters>
+                        <parameter id="r1kp" name="Kforward" value="3e8"/>
+                        <parameter id="r1ka" name="Kreverse" value="0"/>
+                    </listOfParameters>
+                </kineticLaw>
+            </reaction>
+        </listOfReactions>
+    </model>
+</sbml>
