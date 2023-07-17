@@ -1,0 +1,1 @@
+Folders label unimolecular rate of reaction, file names show # of timestep cycles which match increasing/decreasing timescale of experiments. Smaller timesteps mean more time cycles to compensate, to match total simulated time.

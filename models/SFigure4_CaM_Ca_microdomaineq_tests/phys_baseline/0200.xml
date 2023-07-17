@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by SBML API 2.0(a17.0) -->
+<sbml level="2" version="1" 
+	xmlns="http://www.sbml.org/sbml/level2" 
+	xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
+	<model id="Ca_Cal">
+
+		<annotation>
+			<cell4d:environmentVariables>
+				<cell4d:X_DIM>4</cell4d:X_DIM>
+				<cell4d:Y_DIM>4</cell4d:Y_DIM>
+				<cell4d:Z_DIM>4</cell4d:Z_DIM>
+				<cell4d:GEOMETRY>cube</cell4d:GEOMETRY>
+				<cell4d:TIMESCALE>2.5e-6</cell4d:TIMESCALE>
+				<cell4d:SPACESCALE>2.0e-7</cell4d:SPACESCALE>
+				<cell4d:INACCESSIBLE_SPACE_PERCENT>0</cell4d:INACCESSIBLE_SPACE_PERCENT>
+				<cell4d:MAX_CYCLES>40000</cell4d:MAX_CYCLES>
+			</cell4d:environmentVariables>
+
+			<cell4d:listOfAnnotationSpeciesTypes>
+				<cell4d:speciesType id="Calcium" speciesTypeName="Calcium" speciesMoleculeType="SIMPLE_MOLECULE">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:diffusionConstant value="5.3e-10"/>
+					<cell4d:displayProperties colourLabel="lyellow" redValue="50" greenValue="50" blueValue="0"/>
+				</cell4d:speciesType>
+				<cell4d:speciesType id="Calmodulin_C" speciesTypeName="Calmodulin" speciesMoleculeType="PROTEIN">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfBindingSites>
+						<cell4d:bindingSite id="ca_1"/>
+						<cell4d:bindingSite id="ca_2"/>
+					</cell4d:listOfBindingSites>
+					<cell4d:diffusionConstant value="1.0e-12"/>
+					<cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
+				</cell4d:speciesType>
+				<cell4d:speciesType id="Calmodulin_N" speciesTypeName="Calmodulin" speciesMoleculeType="PROTEIN">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfBindingSites>
+						<cell4d:bindingSite id="ca_1"/>
+						<cell4d:bindingSite id="ca_2"/>
+					</cell4d:listOfBindingSites>
+					<cell4d:diffusionConstant value="1.0e-12"/>
+					<cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
+				</cell4d:speciesType>
+			</cell4d:listOfAnnotationSpeciesTypes>
+		</annotation>
+
+		<!-- Standard SBML starts here -->
+		<listOfCompartments>
+			<compartment id="default"/>
+			<compartment id="c0" name="cube" outside="c2">
+				<annotation>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="10" y2="10" z2="10"/>
+				</annotation>
+			</compartment>
+			<compartment id="c2" name="cell" outside="default">
+				<annotation>
+						<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="10" y2="10" z2="10"/>
+				</annotation>
+			</compartment>
+		</listOfCompartments>
+
+		<listOfSpecies>
+			<species id="Calcium_unbound" name="Calcium_unbound" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0" initial="200.00" distribution="random" xpoint="" ypoint="" zpoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="Calcium"/>
+					</cell4d:listOfSpeciesTypes>
+				</annotation>
+			</species>
+			<species id="Calmodulin" name="Calmodulin" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0" initial="0" distribution="random" point="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="Calmodulin_C">
+							<cell4d:bindingSite id="ca_1" state="" binding="bind"/>
+							<cell4d:bindingSite id="ca_2" state="" binding="bind"/>
+						</cell4d:speciesType>
+						<cell4d:speciesType id="Calmodulin_N">
+							<cell4d:bindingSite id="ca_1" state="" binding="bind"/>
+							<cell4d:bindingSite id="ca_2" state="" binding="bind"/>
+						</cell4d:speciesType>
+						<cell4d:speciesType id="Calcium"/>
+						<cell4d:speciesType id="Calcium"/>
+						<cell4d:speciesType id="Calcium"/>
+						<cell4d:speciesType id="Calcium"/>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:displayProperties colourLabel="magenta" redValue="0" greenValue="0" blueValue="255"/>
+				</annotation>
+			</species>
+			<species id="Calmodulin_empty" name="Calmodulin" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0" initial="616" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="Calmodulin_C">
+							<cell4d:bindingSite id="ca_1" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+						</cell4d:speciesType>
+						<cell4d:speciesType id="Calmodulin_N">
+							<cell4d:bindingSite id="ca_1" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</annotation>
+			</species>
+		</listOfSpecies>
+
+		<listOfReactions>
+			<!-- Calcium-Calmodulin reactions are split into C and N terminus bindings using a 2-step cooperative model -->
+			<reaction id="Cal_C_1" reversible="true">
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_C">
+									<cell4d:bindingSite id="ca_1" state="" binding="unbound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_C">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+								</cell4d:speciesType>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+                    <speciesReference species="ignored"/>
+                </listOfProducts>
+                <listOfModifiers>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="empty"/>                                
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <modifierSpeciesReference species="ignored"/>
+                </listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<!-- forward rate for step 1 is doubled -->
+						<parameter id="r1kp" name="Kforward" value="1.68e8"/>
+						<parameter id="r1ka" name="Kreverse" value="2.6e3"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="Cal_C_2" reversible="true">
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_C">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+                    <speciesReference species="ignored"/>
+				</listOfReactants>
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_C">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="bound"/>
+								</cell4d:speciesType>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+                    <speciesReference species="ignored"/>
+                </listOfProducts>
+                <listOfModifiers>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="empty"/>                                
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <modifierSpeciesReference species="ignored"/>
+                </listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<!-- reverse rate for step 2 is doubled -->
+						<parameter id="r1kp" name="Kforward" value="2.5e7"/>
+						<parameter id="r1ka" name="Kreverse" value="1.3e1"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="Cal_N_1" reversible="true">
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_N">
+									<cell4d:bindingSite id="ca_1" state="" binding="unbound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_N">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+								</cell4d:speciesType>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+                    <speciesReference species="ignored"/>
+                </listOfProducts>
+                <listOfModifiers>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="empty"/>                                
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <modifierSpeciesReference species="ignored"/>
+                </listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<!-- forward rate for step 1 is doubled -->
+						<parameter id="r1kp" name="Kforward" value="1.54e9"/>
+						<parameter id="r1ka" name="Kreverse" value="1.6e5"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="Cal_N_2" reversible="true">
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_N">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="unbound"/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+                    <speciesReference species="ignored"/>
+				</listOfReactants>
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin_N">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="bound"/>
+								</cell4d:speciesType>
+								<cell4d:speciesType id="Calcium"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+                    <speciesReference species="ignored"/>
+                </listOfProducts>
+                <listOfModifiers>
+                    <annotation>
+                        <cell4d:speciesReference>
+                            <cell4d:listOfSpeciesTypes>
+                                <cell4d:speciesType id="empty"/>                                
+                            </cell4d:listOfSpeciesTypes>
+                        </cell4d:speciesReference>
+                    </annotation>
+                    <modifierSpeciesReference species="ignored"/>
+                </listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<!-- reverse rate for step 2 is doubled -->
+						<parameter id="r1kp" name="Kforward" value="3.2e10"/>
+						<parameter id="r1ka" name="Kreverse" value="4.4e4"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+		</listOfReactions>
+	</model>
+</sbml>

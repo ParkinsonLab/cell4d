@@ -1,0 +1,3 @@
+
+phys_baseline: SF4A, Comparing predicted with Cell4D simulated well-mixed CaM equilibrium, CaM_mixed_predictive_simulated_new.tiff
+microdomains_long SF4A/B, Calcium microdomains exhibit increased CaM saturation, CaM_microdomain_sustain.pdf

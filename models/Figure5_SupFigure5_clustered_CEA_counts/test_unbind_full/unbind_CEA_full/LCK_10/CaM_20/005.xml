@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by SBML API 2.0(a17.0) -->
+<sbml xmlns="http://www.sbml.org/sbml/level2" 
+	xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d" level="2" version="1">
+	<model id="CEACAM_rest">
+
+		<annotation>
+			<cell4d:environmentVariables>
+				<cell4d:X_DIM>6</cell4d:X_DIM>
+				<cell4d:Y_DIM>6</cell4d:Y_DIM>
+				<cell4d:Z_DIM>6</cell4d:Z_DIM>
+				<cell4d:GEOMETRY>cube</cell4d:GEOMETRY>
+				<cell4d:TIMESCALE>5.0e-5</cell4d:TIMESCALE>
+				<cell4d:SPACESCALE>2e-7</cell4d:SPACESCALE>
+				<cell4d:INACCESSIBLE_SPACE_PERCENT>0</cell4d:INACCESSIBLE_SPACE_PERCENT>
+				<cell4d:MAX_CYCLES>200000</cell4d:MAX_CYCLES>
+			</cell4d:environmentVariables>
+
+			<cell4d:listOfAnnotationSpeciesTypes>
+				<cell4d:speciesType id="CEACAM1L" speciesTypeName="CEACAM1L" speciesMoleculeType="PROTEIN">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0"/>
+						<cell4d:compartment id="c0_1"/>
+						<cell4d:compartment id="c1"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfBindingSites>
+						<cell4d:bindingSite id="Cal"/>
+						<cell4d:bindingSite id="ITIL1">
+							<cell4d:listOfPossibleStates>
+								<cell4d:state id="Phosphorylated" value="P"/>
+								<cell4d:state id="UnPhosphorylated" value="U"/>
+							</cell4d:listOfPossibleStates>
+						</cell4d:bindingSite>
+						<cell4d:bindingSite id="cis"/>
+						<cell4d:bindingSite id="trans">
+							<cell4d:listOfPossibleStates>
+								<cell4d:state id="Bound" value="B"/>
+								<cell4d:state id="Unbound" value="U"/>
+							</cell4d:listOfPossibleStates>
+						</cell4d:bindingSite>
+					</cell4d:listOfBindingSites>
+					<cell4d:diffusionConstant value="3.0e-13"/>
+					<cell4d:compartmentEmissionRate origin="c0_1" target="c0_0" probability="1"/>
+					<cell4d:displayProperties colourLabel="dm" redValue="210" greenValue="0" blueValue="0" membraneDisplay="false"/>
+				</cell4d:speciesType>
+				<cell4d:speciesType id="Calmodulin" speciesTypeName="Calmodulin" speciesMoleculeType="PROTEIN">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_2"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfBindingSites>
+						<cell4d:bindingSite id="ca_1"/>
+						<cell4d:bindingSite id="ca_2"/>
+						<cell4d:bindingSite id="ITIL"/>
+						<cell4d:bindingSite id="ca_3"/>
+						<cell4d:bindingSite id="ca_4"/>
+					</cell4d:listOfBindingSites>
+					<cell4d:diffusionConstant value="1.0e-12"/>
+					<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="0" blueValue="0"/>
+				</cell4d:speciesType>
+				<cell4d:speciesType id="LCK" speciesTypeName="LCK" speciesMoleculeType="PROTEIN">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfBindingSites>
+						<cell4d:bindingSite id="active">
+							<cell4d:listOfPossibleStates>
+								<cell4d:state id="Phosphorylated" value="P"/>
+								<cell4d:state id="UnPhosphorylated" value="U"/>
+							</cell4d:listOfPossibleStates>
+						</cell4d:bindingSite>
+					</cell4d:listOfBindingSites>
+					<cell4d:diffusionConstant value="3.0e-13"/>
+					<cell4d:displayProperties colourLabel="lgreen" redValue="0" greenValue="0" blueValue="0"/>
+				</cell4d:speciesType>
+			</cell4d:listOfAnnotationSpeciesTypes>
+
+			<cell4d:events>
+				<!-- (4 + 3 + 4 + 3 + 2 + 2 + 3 + 3 + 2) * 0.25 * (1/400) = 0.01625/ts = 6.5/400ts -->
+				<event name="AP1_endocytosis_s0" type="transport_mols" trigger="time" probability="0.125"> <!-- 2x1 -->
+					<transport_mols id="CEACAM_dimer_unphos" amount="2"/>
+					<time_trigger repeat="true" interval="200" initial="0"/>
+					<location xloc_1="0" yloc_1="0" zloc_1="0" xloc_2="0" yloc_2="0" zloc_2="0"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s1" type="transport_mols" trigger="time" probability="0.125"> <!-- 2x2 -->
+					<transport_mols id="CEACAM_dimer_unphos" amount="3"/>
+					<time_trigger repeat="true" interval="200" initial="31"/>
+					<location xloc_1="0" yloc_1="1" zloc_1="0" xloc_2="0" yloc_2="2" zloc_2="2"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s2" type="transport_mols" trigger="time" probability="0.125"> <!-- 2x3 -->
+					<transport_mols id="CEACAM_dimer_unphos" amount="4"/>
+					<time_trigger repeat="true" interval="200" initial="67"/>
+					<location xloc_1="0" yloc_1="2" zloc_1="2" xloc_2="0" yloc_2="3" zloc_2="4"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s3" type="transport_mols" trigger="time" probability="0.125"> <!-- 2x1-->
+					<transport_mols id="CEACAM_dimer_unphos" amount="3"/>
+					<time_trigger repeat="true" interval="200" initial="141"/>
+					<location xloc_1="0" yloc_1="4" zloc_1="0" xloc_2="0" yloc_2="5" zloc_2="0"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s4" type="transport_mols" trigger="time" probability="0.125"> <!-- 1x2-->
+					<transport_mols id="CEACAM_dimer_unphos" amount="2"/>
+					<time_trigger repeat="true" interval="200" initial="183"/>
+					<location xloc_1="1" yloc_1="5" zloc_1="1" xloc_2="1" yloc_2="5" zloc_2="2"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s5" type="transport_mols" trigger="time" probability="0.125">
+					<transport_mols id="CEACAM_dimer_unphos" amount="2"/>
+					<time_trigger repeat="true" interval="200" initial="229"/>
+					<location xloc_1="0" yloc_1="5" zloc_1="4" xloc_2="0" yloc_2="5" zloc_2="5"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s6" type="transport_mols" trigger="time" probability="0.125"> <!-- 3x1 -->
+					<transport_mols id="CEACAM_dimer_unphos" amount="3"/>
+					<time_trigger repeat="true" interval="200" initial="394"/>
+					<location xloc_1="0" yloc_1="0" zloc_1="5" xloc_2="0" yloc_2="2" zloc_2="5"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s7" type="transport_mols" trigger="time" probability="0.125"> <!-- 1x3 -->
+					<transport_mols id="CEACAM_dimer_unphos" amount="3"/>
+					<time_trigger repeat="true" interval="200" initial="460"/>
+					<location xloc_1="0" yloc_1="4" zloc_1="2" xloc_2="0" yloc_2="4" zloc_2="4"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+				<event name="AP1_endocytosis_s8" type="transport_mols" trigger="time" probability="0.125"> <!-- 1x2 -->
+					<transport_mols id="CEACAM_dimer_unphos" amount="4"/>
+					<time_trigger repeat="true" interval="200" initial="519"/>
+					<location xloc_1="0" yloc_1="0" zloc_1="2" xloc_2="0" yloc_2="0" zloc_2="4"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c1"/>
+				</event>
+
+				<!-- (5 + 4 + 4 + 2 + 2 + 2) * 0.25 * (1/799) = 0.0059/ts = 2.38/400ts -->
+				<event name="AP2_exocytosis_s0_0" type="transport_mols" trigger="state" probability="0.25">
+					<transport_mols id="CEACAM_dimer_unphos" amount="5"/>
+					<state_trigger repeat="true" interval="399" initial="0" condition="greater_than" id="CEACAM_dimer_unphos" amount="16"/> <!-- based on eq of 150d (300m) CEA inside-->
+					<state_trigger_loc xloc_1="4" yloc_1="1" zloc_1="0" xloc_2="5" yloc_2="2" zloc_2="1"/> <!-- where the state is detected -->
+					<location xloc_1="4" yloc_1="1" zloc_1="0" xloc_2="5" yloc_2="2" zloc_2="1"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c0_1"/>
+				</event>
+				<event name="AP2_exocytosis_s0_1" type="transport_mols" trigger="state" probability="0.25">
+					<transport_mols id="CEACAM_dimer_unphos" amount="4"/>
+					<state_trigger repeat="true" interval="399" initial="170" condition="greater_than" id="CEACAM_dimer_unphos" amount="16"/> <!-- based on eq of 150d (300m) CEA inside-->
+					<state_trigger_loc xloc_1="4" yloc_1="4" zloc_1="1" xloc_2="5" yloc_2="5" zloc_2="2"/> <!-- where the state is detected -->
+					<location xloc_1="4" yloc_1="4" zloc_1="1" xloc_2="5" yloc_2="5" zloc_2="2"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c0_1"/>
+				</event>
+				<event name="AP2_exocytosis_s0_2" type="transport_mols" trigger="state" probability="0.25">
+					<transport_mols id="CEACAM_dimer_unphos" amount="4"/>
+					<state_trigger repeat="true" interval="399" initial="231" condition="greater_than" id="CEACAM_dimer_unphos" amount="16"/> <!-- based on eq of 150d (300m) CEA inside-->
+					<state_trigger_loc xloc_1="4" yloc_1="0" zloc_1="3" xloc_2="5" yloc_2="1" zloc_2="4"/> <!-- where the state is detected -->
+					<location xloc_1="4" yloc_1="0" zloc_1="3" xloc_2="5" yloc_2="1" zloc_2="4"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c0_1"/>
+				</event>
+				<event name="AP2_exocytosis_s1_0" type="transport_mols" trigger="state" probability="0.25"> <!-- 2x1x1 this time-->
+					<transport_mols id="CEACAM_dimer_unphos" amount="2"/>
+					<state_trigger repeat="true" interval="399" initial="399" condition="greater_than" id="CEACAM_dimer_unphos" amount="4"/> <!-- based on eq of 150d (300m) CEA inside-->
+					<state_trigger_loc xloc_1="4" yloc_1="3" zloc_1="3" xloc_2="5" yloc_2="3" zloc_2="3"/> <!-- where the state is detected -->
+					<location xloc_1="4" yloc_1="3" zloc_1="3" xloc_2="5" yloc_2="3" zloc_2="3"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c0_1"/>
+				</event>
+				<event name="AP2_exocytosis_s1_1" type="transport_mols" trigger="state" probability="0.25"> <!-- 2x1x1 this time-->
+					<transport_mols id="CEACAM_dimer_unphos" amount="2"/>
+					<state_trigger repeat="true" interval="399" initial="527" condition="greater_than" id="CEACAM_dimer_unphos" amount="4"/> <!-- based on eq of 150d (300m) CEA inside-->
+					<state_trigger_loc xloc_1="4" yloc_1="4" zloc_1="4" xloc_2="5" yloc_2="4" zloc_2="4"/> <!-- where the state is detected -->
+					<location xloc_1="4" yloc_1="4" zloc_1="4" xloc_2="5" yloc_2="4" zloc_2="4"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c0_1"/>
+				</event>
+				<event name="AP2_exocytosis_s2_0" type="transport_mols" trigger="state" probability="0.25"> <!-- 2x1x1 this time-->
+					<transport_mols id="CEACAM_dimer_unphos" amount="2"/>
+					<state_trigger repeat="true" interval="399" initial="816" condition="greater_than" id="CEACAM_dimer_unphos" amount="2"/> <!-- based on eq of 150d (300m) CEA inside-->
+					<state_trigger_loc xloc_1="4" yloc_1="2" zloc_1="5" xloc_2="4" yloc_2="2" zloc_2="5"/> <!-- where the state is detected -->
+					<location xloc_1="4" yloc_1="2" zloc_1="5" xloc_2="4" yloc_2="2" zloc_2="5"/> <!-- where the transport candidate molecules will be pulled from -->
+					<transport_destination compartment="c0_1"/>
+				</event>
+
+			</cell4d:events>
+		</annotation>
+
+		<!-- Standard SBML starts here -->
+		<listOfCompartments>
+			<compartment id="default"/>
+			<compartment id="c0_0" name="raft" outside="c3">
+				<annotation>
+					<cell4d:compartmentProperties type="membrane" axis="x" face="back" membraneEmissionRate="0" absorptionRate="0"/>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="1" x2="0" y2="0" z2="1"/>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="1" z1="3" x2="0" y2="1" z2="4"/>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="3" z1="1" x2="0" y2="4" z2="1"/>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="3" z1="5" x2="0" y2="3" z2="5"/>
+				</annotation>
+			</compartment>
+			<compartment id="c0_1" name="membrane" outside="c3">
+				<annotation>
+					<cell4d:compartmentProperties type="membrane" axis="auto" face="back" membraneEmissionRate="0" absorptionRate="0"/>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="0" y2="5" z2="5"/>
+				</annotation>
+			</compartment>
+			<compartment id="c0_2" name="underlayer" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="solid" x1="1" y1="0" z1="0" x2="1" y2="5" z2="5"/>
+				</annotation>
+			</compartment>
+			<compartment id="c1" name="ceacam_dest" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="solid" x1="4" y1="0" z1="0" x2="5" y2="5" z2="5"/>
+				</annotation>
+			</compartment>
+		</listOfCompartments>
+
+		<listOfSpecies>
+			<species id="CEACAM_mono_phos" name="CEACAM_monomer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0" initial="0.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="CEACAM1L">
+							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ITIL1" state="P" binding=""/>
+							<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+							<cell4d:bindingSite id="trans" state="U" binding=""/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:compartmentEmissionRate origin="c0_0" target="c0_1" probability="1e-1"/>
+					<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="210" membraneDisplay="false"/>
+				</annotation>
+			</species>
+			<species id="CEACAM_mono_unphos" name="CEACAM_monomer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0" initial="1.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+						<cell4d:compartment id="c0_1" initial="9.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="CEACAM1L">
+							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ITIL1" state="U" binding=""/>
+							<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+							<cell4d:bindingSite id="trans" state="U" binding=""/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:compartmentEmissionRate origin="c0_0" target="c0_1" probability="1e-1"/>
+					<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="100" membraneDisplay="false"/>
+				</annotation>
+			</species>
+			<species id="CEACAM_dimer_unphos" name="CEACAM_dimer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0" initial="0.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+						<cell4d:compartment id="c0_1" initial="30.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+						<cell4d:compartment id="c1" initial="220.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="CEACAM1L">
+							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ITIL1" state="U" binding=""/>
+							<cell4d:bindingSite id="cis" state="" binding="bind"/>
+							<cell4d:bindingSite id="trans" state="U" binding=""/>
+						</cell4d:speciesType>
+						<cell4d:speciesType id="CEACAM1L">
+							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ITIL1" state="U" binding=""/>
+							<cell4d:bindingSite id="cis" state="" binding="bind"/>
+							<cell4d:bindingSite id="trans" state="U" binding=""/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:compartmentEmissionRate origin="c0_1" target="c0_0" probability="1e-1"/>
+					<cell4d:displayProperties colourLabel="red" redValue="80" greenValue="0" blueValue="0" membraneDisplay="false"/>
+				</annotation>
+			</species>
+			<species id="Calmodulin_full" name="Calmodulin" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_2" initial="20.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="Calmodulin">
+							<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+							<cell4d:bindingSite id="ca_2" state="" binding="bound"/>
+							<cell4d:bindingSite id="ITIL" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ca_3" state="" binding="bound"/>
+							<cell4d:bindingSite id="ca_4" state="" binding="bound"/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</annotation>
+			</species>
+
+			<species id="CEACAM_trans_phos" name="CEACAM_monomer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0" initial="0.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="CEACAM1L">
+							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ITIL1" state="P" binding=""/>
+							<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+							<cell4d:bindingSite id="trans" state="B" binding=""/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:diffusionConstant value="0"/>
+					<cell4d:compartmentEmissionRate origin="c0_0" target="c0_1" probability="1e-1"/>
+					<cell4d:displayProperties colourLabel="yellow" redValue="150" greenValue="150" blueValue="0" membraneDisplay="false"/>
+				</annotation>
+			</species>
+			<species id="CEACAM_trans_unphos" name="CEACAM_monomer" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0" initial="0.00" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="CEACAM1L">
+							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+							<cell4d:bindingSite id="ITIL1" state="U" binding=""/>
+							<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+							<cell4d:bindingSite id="trans" state="B" binding=""/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+					<cell4d:diffusionConstant value="0"/>
+					<cell4d:compartmentEmissionRate origin="c0_0" target="c0_1" probability="1e-1"/>
+					<cell4d:displayProperties colourLabel="yellow" redValue="150" greenValue="150" blueValue="0" membraneDisplay="false"/>
+				</annotation>
+			</species>
+
+			<species id="LCK" name="LCK" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0_0" initial="10.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="LCK">
+							<cell4d:bindingSite id="active" state="P" binding=""/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</annotation>
+			</species>
+
+		</listOfSpecies>
+
+		<listOfReactions>
+			<reaction id="R_cea2_cam" reversible="false">
+				<!-- R_cea2_cam is the dissociation of CEACAM dimers by calmodulin -->
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="bound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="bound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="bound"/>
+									<cell4d:bindingSite id="ITIL" state="" binding="unbound"/>
+									<cell4d:bindingSite id="ca_3" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_4" state="" binding="bound"/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="Calmodulin">
+									<cell4d:bindingSite id="ca_1" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_2" state="" binding="bound"/>
+									<cell4d:bindingSite id="ITIL" state="" binding="unbound"/>
+									<cell4d:bindingSite id="ca_3" state="" binding="bound"/>
+									<cell4d:bindingSite id="ca_4" state="" binding="bound"/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfProducts>
+				<listOfModifiers>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="empty"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<modifierSpeciesReference species="ignored"/>
+				</listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<parameter id="r1kp" name="Kforward" value="1e7"/>
+						<parameter id="r1ub" name="unbind" value="4e-9"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="R_cea_cea" reversible="false">
+				<!-- the association of two CEACAM monomers into a dimer -->
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+					<cell4d:listOfCompartments>
+						<cell4d:compartment id="c0_1"/>
+					</cell4d:listOfCompartments>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="bound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="bound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfProducts>
+				<listOfModifiers>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="empty"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<modifierSpeciesReference species="ignored"/>
+				</listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<parameter id="r1kp" name="Kforward" value="2e4"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="R_cea_trans" reversible="false">
+				<!-- the association of two CEACAM monomers into a dimer -->
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+					<cell4d:listOfCompartments>
+						<cell4d:compartment id="c0_0"/>
+					</cell4d:listOfCompartments>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="B" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfProducts>
+				<listOfModifiers>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="empty"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<modifierSpeciesReference species="ignored"/>
+				</listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<parameter id="r1kf" name="Kforward" value="2e1"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="R_cea_un_trans" reversible="false">
+				<!-- the association of two CEACAM monomers into a dimer -->
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="B" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfProducts>
+				<listOfModifiers>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="empty"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<modifierSpeciesReference species="ignored"/>
+				</listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<parameter id="r1kf" name="Kforward" value="2e2"/>
+						<parameter id="r1kp" name="unbind" value="5e-9"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="R_cea_trans_link" reversible="false">
+				<!-- the association of two CEACAM monomers into a dimer -->
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+					<cell4d:listOfCompartments>
+						<cell4d:compartment id="c0_0"/>
+					</cell4d:listOfCompartments>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="unbound"/>
+									<cell4d:bindingSite id="trans" state="B" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="bound"/>
+									<cell4d:bindingSite id="trans" state="B" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
+									<cell4d:bindingSite id="cis" state="" binding="bound"/>
+									<cell4d:bindingSite id="trans" state="B" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfProducts>
+				<listOfModifiers>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="empty"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<modifierSpeciesReference species="ignored"/>
+				</listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<parameter id="r1kp" name="radius" value="2.5e-8"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+
+			<reaction id="r_CEA_phos" reversible="false">
+				<!-- r_CEA_phos is the phosphorylation of CEACAM by kinase LCK -->
+				<annotation>
+					<cell4d:reactionType>Interaction</cell4d:reactionType>
+				</annotation>
+				<listOfReactants>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="ITIL1" state="U" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="LCK">
+									<cell4d:bindingSite id="active" state="P" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfReactants>
+				<listOfProducts>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="CEACAM1L">
+									<cell4d:bindingSite id="ITIL1" state="P" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="LCK">
+									<cell4d:bindingSite id="active" state="P" binding=""/>
+								</cell4d:speciesType>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<speciesReference species="ignored"/>
+				</listOfProducts>
+				<listOfModifiers>
+					<annotation>
+						<cell4d:speciesReference>
+							<cell4d:listOfSpeciesTypes>
+								<cell4d:speciesType id="empty"/>
+							</cell4d:listOfSpeciesTypes>
+						</cell4d:speciesReference>
+					</annotation>
+					<modifierSpeciesReference species="ignored"/>
+				</listOfModifiers>
+				<kineticLaw>
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<ci>Elementary Rate Law</ci>
+					</math>
+					<listOfParameters>
+						<parameter id="r1kp" name="Kforward" value="2e5"/>
+						<parameter id="r1ka" name="Kreverse" value="0"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+		</listOfReactions>
+
+
+	</model>
+</sbml>

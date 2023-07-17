@@ -1,0 +1,1 @@
+SF3, Reaction products from a two-particle reaction using AB-adjusted radii. difc is reactant diffusion constant, rate is reaction rate, file name is timecycle counts which corresponds to timescale to equalize simulated time.

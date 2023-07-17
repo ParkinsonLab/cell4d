@@ -1,0 +1,1 @@
+difc is the diffusion constant of the reactants, rate is reaction rate (internally converted to smoluchowski reaction radii), file name is # of cycles representing timescale of experiment.

@@ -1,0 +1,4 @@
+test_unbind_extra/unbind_CEA_full: F5 Clustered monomeric CEACAM counts (restricted raft only), SF5, CEACAM clustering in model variants. NOTE: uses 2.5e-9 as the unbind kinetics
+test_unbind_extra/unbind_CEA_noraft: F5 Clustered monomeric CEACAM counts (restricted raft only), SF5, CEACAM clustering in model variants. NOTE: uses 2.5e-9 as the unbind kinetics
+test_unbind_full/unbind_CEA_full: F5 Clustered monomeric CEACAM counts (restricted raft only), SF5, CEACAM clustering in model variants. NOTE: uses 2.5e-9 as the unbind kinetics
+test_unbind_full/unbind_CEA_noraft: F5 Clustered monomeric CEACAM counts (restricted raft only), SF5, CEACAM clustering in model variants. NOTE: uses 2.5e-9 as the unbind kinetics

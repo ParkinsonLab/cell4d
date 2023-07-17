@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml level="2" version="1" xmlns="http://www.sbml.org/sbml/level2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sbml.org/sbml/level2 sbml.xsd"
+xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
+<model id="Fusion">
+
+	<annotation>
+		<cell4d:environmentVariables>
+			<cell4d:X_DIM>2</cell4d:X_DIM>
+			<cell4d:Y_DIM>2</cell4d:Y_DIM>
+			<cell4d:Z_DIM>2</cell4d:Z_DIM>
+			<cell4d:GEOMETRY>cube</cell4d:GEOMETRY>
+			<cell4d:TIMESCALE>1.0e-5</cell4d:TIMESCALE>
+			<cell4d:SPACESCALE>3.0e-7</cell4d:SPACESCALE>
+			<cell4d:INACCESSIBLE_SPACE_PERCENT>0</cell4d:INACCESSIBLE_SPACE_PERCENT>
+			<cell4d:MAX_CYCLES>1000</cell4d:MAX_CYCLES>
+		</cell4d:environmentVariables>
+
+		<cell4d:listOfAnnotationSpeciesTypes>
+			<!-- These are small molecules to be set up as voxel concentrations -->
+			<cell4d:speciesType id="A" speciesTypeName="A_particle" speciesMoleculeType="PROTEIN">
+				<cell4d:listOfValidCompartments>
+					<cell4d:compartment id="c0"/>
+				</cell4d:listOfValidCompartments>
+				<cell4d:listOfBindingSites>
+					<cell4d:BindingSite id="fusion"/>
+				</cell4d:listOfBindingSites>
+				<cell4d:diffusionConstant value="1.0e-11"/>
+				<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="255"/>
+			</cell4d:speciesType>
+
+			<!-- The original model contained separate definitions for the same protein found in nucleus vs. cytoplasm.  These are now consolidated -->
+			<cell4d:speciesType id="B" speciesTypeName="B_particle" speciesMoleculeType="PROTEIN">
+				<cell4d:listOfValidCompartments>
+					<cell4d:compartment id="c0"/>
+				</cell4d:listOfValidCompartments>
+				<cell4d:listOfBindingSites>
+					<cell4d:BindingSite id="fusion"/>
+				</cell4d:listOfBindingSites>
+				<cell4d:diffusionConstant value="1.0e-11"/>
+				<cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
+			</cell4d:speciesType>
+		</cell4d:listOfAnnotationSpeciesTypes>
+	</annotation>
+	
+<!-- Standard SBML starts here -->
+	
+	<listOfCompartments>
+		<compartment id="default"/>
+		<compartment id="c0" name="metabolite_pump" outside="c2">
+			<annotation>
+            	<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="10" y2="10" z2="10"/>
+			</annotation>
+		</compartment>
+		<compartment id="c2" name="cell" outside="default">
+			<annotation>
+                    <cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="10" y2="10" z2="10"/>
+			</annotation>
+		</compartment>
+	</listOfCompartments>		
+	
+	<listOfSpecies>
+		<species id="A" name="A_particle" compartment="default">
+			<annotation>
+				<cell4d:listOfValidCompartments>
+					<cell4d:compartment id="c0" initial="500.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+				</cell4d:listOfValidCompartments>
+				<cell4d:listOfSpeciesTypes>
+					<cell4d:speciesType id="A">
+						<cell4d:bindingSite id="fusion" state="" binding="unbound"/>
+					</cell4d:speciesType>
+				</cell4d:listOfSpeciesTypes>
+			</annotation>
+		</species>		
+		<species id="B" name="B_particle" compartment="default">
+			<annotation>
+				<cell4d:listOfValidCompartments>
+					<cell4d:compartment id="c0" initial="500.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+				</cell4d:listOfValidCompartments>
+				<cell4d:listOfSpeciesTypes>
+					<cell4d:speciesType id="B">
+						<cell4d:bindingSite id="fusion" state="" binding="unbound"/>
+					</cell4d:speciesType>
+				</cell4d:listOfSpeciesTypes>
+			</annotation>
+		</species>
+		<species id="bulk" name="complex" compartment="default">
+			<annotation>
+				<cell4d:listOfValidCompartments>
+					<cell4d:compartment id="c0" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+				</cell4d:listOfValidCompartments>
+				<cell4d:listOfSpeciesTypes>
+					<cell4d:speciesType id="A">
+						<cell4d:bindingSite id="fusion" state="" binding="bound"/>
+					</cell4d:speciesType>
+					<cell4d:speciesType id="B">
+						<cell4d:bindingSite id="fusion" state="" binding="bound"/>
+					</cell4d:speciesType>
+				</cell4d:listOfSpeciesTypes>
+				<cell4d:diffusionConstant value="1.0e-11"/>
+			</annotation>
+		</species>
+	</listOfSpecies>
+
+<listOfReactions>
+
+	<reaction id="bulk_particle_fusion" reversible="false">
+		<!-- R_cea_ap1 is the association of CEACAM with adaptor protein AP1, with subsequent transport to plasma membrane region -->
+		<annotation>
+			<cell4d:reactionType>Interaction</cell4d:reactionType>
+			<cell4d:listOfCompartments>
+				<cell4d:compartment id="c0"/>
+			</cell4d:listOfCompartments>
+		</annotation>
+		<listOfReactants>
+			<annotation>
+				<cell4d:speciesReference>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="A">
+							<cell4d:bindingSite id="fusion" state="" binding="unbound"/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</cell4d:speciesReference>
+				<cell4d:speciesReference>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="B">
+							<cell4d:bindingSite id="fusion" state="" binding="unbound"/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</cell4d:speciesReference>
+			</annotation>
+			<speciesReference species="ignored"/>
+		</listOfReactants>
+
+		<listOfProducts>
+			<annotation>
+				<cell4d:speciesReference>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="A">
+							<cell4d:bindingSite id="fusion" state="" binding="bound"/>
+						</cell4d:speciesType>
+						<cell4d:speciesType id="B">
+							<cell4d:bindingSite id="fusion" state="" binding="bound"/>
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</cell4d:speciesReference>
+			</annotation>
+			<speciesReference species="ignored"/>
+		</listOfProducts>
+
+		<listOfModifiers>
+			<annotation>
+				<cell4d:speciesReference>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="empty"/>
+					</cell4d:listOfSpeciesTypes>
+				</cell4d:speciesReference>
+			</annotation>
+			<modifierSpeciesReference species="ignored"/>
+		</listOfModifiers>
+		<kineticLaw>
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<ci>Elementary Rate Law</ci>
+			</math>
+			<listOfParameters>
+				<parameter id="r1kp" name="Kforward" value="3e7"/>
+				<parameter id="r1ka" name="Kreverse" value="0"/>
+			</listOfParameters>
+		</kineticLaw>
+	</reaction>
+</listOfReactions>
+</model>
+</sbml>

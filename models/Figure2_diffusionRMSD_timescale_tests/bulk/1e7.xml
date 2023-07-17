@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by SBML API 2.0(a17.0) -->
+<!-- green: phosphorylated monomers, red: dimers, blue: unphos monomers-->
+<sbml xmlns="http://www.sbml.org/sbml/level2" xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d" level="2" version="1">
+	<model id="CEACAM_Compartmentalized">
+
+		<annotation>
+			<cell4d:environmentVariables>
+				<cell4d:X_DIM>5</cell4d:X_DIM>
+				<cell4d:Y_DIM>5</cell4d:Y_DIM>
+				<cell4d:Z_DIM>5</cell4d:Z_DIM>
+				<cell4d:GEOMETRY>cube</cell4d:GEOMETRY>
+				<cell4d:TIMESCALE>1e-7</cell4d:TIMESCALE>
+				<cell4d:SPACESCALE>1e-6</cell4d:SPACESCALE>
+				<cell4d:INACCESSIBLE_SPACE_PERCENT>0</cell4d:INACCESSIBLE_SPACE_PERCENT>
+				<cell4d:MAX_CYCLES>1000000</cell4d:MAX_CYCLES>
+			</cell4d:environmentVariables>
+
+			<cell4d:listOfAnnotationSpeciesTypes>
+				<cell4d:speciesType id="bulk" speciesTypeName="AP1" speciesMoleculeType="SIMPLE_MOLECULE">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0"/>
+						<cell4d:compartment id="c1_0_face"/>
+						<cell4d:compartment id="c1_1_corner"/>
+						<cell4d:compartment id="c1_2_edge"/>
+						<cell4d:compartment id="c2_0_face_face"/>
+						<cell4d:compartment id="c2_1_face_face_sides"/>
+						<cell4d:compartment id="c2_2_face_face_corners"/>
+						<cell4d:compartment id="c2_3_corner_corners"/>
+						<cell4d:compartment id="c2_4_edge_middle_edges"/>
+						<cell4d:compartment id="c2_5_edge_mid"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:diffusionConstant value="1.0e-12"/>
+					<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="255" blueValue="0"/>
+				</cell4d:speciesType>
+				<cell4d:speciesType id="particle" speciesTypeName="AP2" speciesMoleculeType="PROTEIN">
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0"/>
+						<cell4d:compartment id="c1_0_face"/>
+						<cell4d:compartment id="c1_1_corner"/>
+						<cell4d:compartment id="c1_2_edge"/>
+						<cell4d:compartment id="c2_0_face_face"/>
+						<cell4d:compartment id="c2_1_face_face_sides"/>
+						<cell4d:compartment id="c2_2_face_face_corners"/>
+						<cell4d:compartment id="c2_3_corner_corners"/>
+						<cell4d:compartment id="c2_4_edge_middle_edges"/>
+						<cell4d:compartment id="c2_5_edge_mid"/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:diffusionConstant value="1.0e-12"/>
+					<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="100" blueValue="100"/>
+				</cell4d:speciesType>
+			</cell4d:listOfAnnotationSpeciesTypes>
+		</annotation>
+
+		<!-- Standard SBML starts here -->
+		<listOfCompartments>
+			<compartment id="default"/>
+			<compartment id="c0" name="raft" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="2" z1="2"/>
+				</annotation>
+			</compartment>
+			<compartment id="c1_0_face" name="membrane" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="2" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="2" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="1" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="3" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="2" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="2" z1="2"/>
+				</annotation>
+			</compartment>
+			<compartment id="c1_1_corner" name="ceacam_dest" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="1" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="1" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="3" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="1" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="3" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="1" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="3" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="3" z1="3"/>
+				</annotation>
+			</compartment>
+			<compartment id="c1_2_edge" name="ceacam_dest" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="solid" x1="1" y1="1" z1="1" x2="3" y2="3" z2="3"/>
+				</annotation>
+			</compartment>
+			<compartment id="c2_0_face_face" name="membrane" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="2" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="2" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="0" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="4" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="2" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="2" z1="2"/>
+				</annotation>
+			</compartment>
+			<compartment id="c2_1_face_face_sides" name="membrane" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="1" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="3" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="2" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="2" z1="0"/>
+
+					<cell4d:latticePointDefinition type="point" x1="2" y1="1" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="3" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="2" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="2" z1="4"/>
+
+					<cell4d:latticePointDefinition type="point" x1="1" y1="0" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="0" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="0" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="0" z1="3"/>
+
+					<cell4d:latticePointDefinition type="point" x1="1" y1="4" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="4" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="4" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="4" z1="3"/>
+
+					<cell4d:latticePointDefinition type="point" x1="0" y1="1" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="3" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="2" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="2" z1="3"/>
+
+					<cell4d:latticePointDefinition type="point" x1="4" y1="1" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="3" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="2" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="2" z1="3"/>
+				</annotation>
+			</compartment>
+			<compartment id="c2_2_face_face_corners" name="membrane" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="1" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="3" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="1" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="3" z1="0"/>
+
+					<cell4d:latticePointDefinition type="point" x1="1" y1="1" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="3" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="1" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="3" z1="4"/>
+
+					<cell4d:latticePointDefinition type="point" x1="1" y1="0" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="0" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="0" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="0" z1="3"/>
+
+					<cell4d:latticePointDefinition type="point" x1="1" y1="4" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="1" y1="4" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="4" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="3" y1="4" z1="3"/>
+
+					<cell4d:latticePointDefinition type="point" x1="0" y1="1" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="1" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="3" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="3" z1="3"/>
+
+					<cell4d:latticePointDefinition type="point" x1="4" y1="1" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="1" z1="3"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="3" z1="1"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="3" z1="3"/>
+				</annotation>
+			</compartment>
+			<compartment id="c2_3_corner_corners" name="membrane" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="0" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="0" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="4" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="0" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="0" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="4" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="4" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="4" z1="4"/>
+				</annotation>
+			</compartment>
+			<compartment id="c2_4_edge_middle_edges" name="membrane" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="0" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="4" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="2" z1="0"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="2" z1="0"/>
+
+					<cell4d:latticePointDefinition type="point" x1="2" y1="0" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="2" y1="4" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="2" z1="4"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="2" z1="4"/>
+					
+					<cell4d:latticePointDefinition type="point" x1="0" y1="0" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="0" y1="4" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="0" z1="2"/>
+					<cell4d:latticePointDefinition type="point" x1="4" y1="4" z1="2"/>
+				</annotation>
+			</compartment>
+			<compartment id="c2_5_edge_mid" name="ceacam_dest" outside="c3">
+				<annotation>
+					<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="4" y2="4" z2="4"/>
+				</annotation>
+			</compartment>
+		</listOfCompartments>
+
+		<listOfSpecies>
+			<species id="particle" name="particle" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0" initial="0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="particle">
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</annotation>
+			</species>
+			<species id="bulk" name="bulk" compartment="default">
+				<annotation>
+					<cell4d:listOfValidCompartments>
+						<cell4d:compartment id="c0" initial="100" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					</cell4d:listOfValidCompartments>
+					<cell4d:listOfSpeciesTypes>
+						<cell4d:speciesType id="bulk">
+						</cell4d:speciesType>
+					</cell4d:listOfSpeciesTypes>
+				</annotation>
+			</species>
+		</listOfSpecies>
+	</model>
+</sbml>
