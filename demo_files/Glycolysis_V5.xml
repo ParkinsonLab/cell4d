@@ -27,7 +27,12 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 <!-- future modifications.  However, at the moment non-cubic compartment shapes are considered too difficult to -->
 <!-- implement and their definitions will be ignored by the code. -->
 
+<!-- 07/19/23 -->
+<!-- Taking diffusion constants of enzymes from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3944625/ table 2 -->
+<!-- small mol diffusion rates estimated from https://www.mdpi.com/1420-3049/25/22/5340  -->
+
 	<annotation>
+        <cell4d:XMLversion>2</cell4d:XMLversion>
 		<cell4d:environmentVariables>
 			<cell4d:X_DIM>10</cell4d:X_DIM>
 			<cell4d:Y_DIM>10</cell4d:Y_DIM>
@@ -45,102 +50,95 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0"/>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
-				<cell4d:listOfBindingSites>
-					<cell4d:BindingSite id = "None"/>
-				</cell4d:listOfBindingSites>
+                <cell4d:diffusionConstant value="7.0e-10"/>
 				<cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
 			</cell4d:speciesType>
 			<cell4d:speciesType id="PGA3" speciesTypeName="3-PGA" speciesMoleculeType="SIMPLE_MOLECULE">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0"/>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
-				<cell4d:listOfBindingSites>
-					<cell4d:BindingSite id = "None"/>
-				</cell4d:listOfBindingSites>
+                <cell4d:diffusionConstant value="7.0e-10"/>
 				<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="255" blueValue="0"/>
 			</cell4d:speciesType>
 			<cell4d:speciesType id="PGA2" speciesTypeName="2-PGA" speciesMoleculeType="SIMPLE_MOLECULE">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0"/>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
-				<cell4d:listOfBindingSites>
-					<cell4d:BindingSite id = "None"/>
-				</cell4d:listOfBindingSites>
+                <cell4d:diffusionConstant value="7.0e-10"/>
 				<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="255"/>
 			</cell4d:speciesType>
 			<cell4d:speciesType id="PEP" speciesTypeName="PEP" speciesMoleculeType="SIMPLE_MOLECULE">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0"/>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
-				<cell4d:listOfBindingSites>
-					<cell4d:BindingSite id = "None"/>
-				</cell4d:listOfBindingSites>
+                <cell4d:diffusionConstant value="7.0e-10"/>
 				<cell4d:displayProperties colourLabel="magenta" redValue="255" greenValue="0" blueValue="255"/>
 			</cell4d:speciesType>
 			<cell4d:speciesType id="Pyruvate" speciesTypeName="Pyruvate" speciesMoleculeType="SIMPLE_MOLECULE">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0"/>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
-				<cell4d:listOfBindingSites>
-					<cell4d:BindingSite id = "None"/>
-				</cell4d:listOfBindingSites>
+                <cell4d:diffusionConstant value="7.0e-10"/>
 				<cell4d:displayProperties colourLabel="yellow" redValue="255" greenValue="255" blueValue="0"/>
 			</cell4d:speciesType>
 			<cell4d:speciesType id="G3P" speciesTypeName="G3P" speciesMoleculeType="SIMPLE_MOLECULE">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0"/>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
-				<cell4d:listOfBindingSites>
-					<cell4d:BindingSite id = "None"/>
-				</cell4d:listOfBindingSites>
+                <cell4d:diffusionConstant value="7.0e-10"/>
 				<cell4d:displayProperties colourLabel="white" redValue="255" greenValue="255" blueValue="255"/>
 			</cell4d:speciesType>
 				
 			<!-- The original model contained separate definitions for the same protein found in nucleus vs. cytoplasm.  These are now consolidated -->
-			<cell4d:speciesType id="PGK" speciesTypeName="PGK" speciesMoleculeType="ENZYME">
+			<cell4d:speciesType id="PGK" speciesTypeName="PGK" speciesMoleculeType="PROTEIN">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
+                <cell4d:diffusionConstant value="3.51e-11"/>
 				<cell4d:displayProperties colourLabel="red" redValue="255" greenValue="0" blueValue="0"/>
 			</cell4d:speciesType>
-			<cell4d:speciesType id="PGM" speciesTypeName="PGM" speciesMoleculeType="ENZYME">
+			<cell4d:speciesType id="PGM" speciesTypeName="PGM" speciesMoleculeType="PROTEIN">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
+                <cell4d:diffusionConstant value="4.59e-11"/>
 				<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="255" blueValue="0"/>
 			</cell4d:speciesType>
-			<cell4d:speciesType id="ENO" speciesTypeName="ENO" speciesMoleculeType="ENZYME">
+			<cell4d:speciesType id="ENO" speciesTypeName="ENO" speciesMoleculeType="PROTEIN">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
+                <cell4d:diffusionConstant value="3.87e-11"/>
 				<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="255"/>
 			</cell4d:speciesType>
-			<cell4d:speciesType id="PYK" speciesTypeName="PYK" speciesMoleculeType="ENZYME">
+			<cell4d:speciesType id="PYK" speciesTypeName="PYK" speciesMoleculeType="PROTEIN">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1"/>
-					<cell4d:compartment id="c2"/>
+					<cell4d:compartment id="background"/>
 				</cell4d:listOfValidCompartments>
+                <cell4d:diffusionConstant value="2.84e-11"/>
 				<cell4d:displayProperties colourLabel="magenta" redValue="255" greenValue="0" blueValue="255"/>
 			</cell4d:speciesType>
-			<cell4d:speciesType id="G3PD" speciesTypeName="G3PD" speciesMoleculeType="ENZYME">
+			<cell4d:speciesType id="G3PD" speciesTypeName="G3PD" speciesMoleculeType="PROTEIN">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1"/>
 				</cell4d:listOfValidCompartments>
+                <cell4d:diffusionConstant value="3.34e-11"/>
 				<cell4d:displayProperties colourLabel="grey" redValue="224" greenValue="224" blueValue="224"/>
 			</cell4d:speciesType>
 		</cell4d:listOfAnnotationSpeciesTypes>
@@ -149,18 +147,17 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 <!-- Standard SBML starts here -->
 	
 	<listOfCompartments>
-		<compartment id="default"/>
-		<compartment id="c0" name="metabolite_pump" outside="c2">
+		<compartment id="c0" name="000" outside="default">
 			<annotation>
             	<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="0" y2="0" z2="0"/>
 			</annotation>
 		</compartment>
-		<compartment id="c1" name="nucleus" outside="c2">
+		<compartment id="c1" name="001" outside="default">
 			<annotation>
                     <cell4d:latticePointDefinition type="solid" x1="4" y1="4" z1="4" x2="5" y2="5" z2="5"/>
 			</annotation>
 		</compartment>
-		<compartment id="c2" name="cell" outside="default">
+		<compartment id="background" name="999" outside="default">
 			<annotation>
                     <cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="10" y2="10" z2="10"/>
 			</annotation>
@@ -173,7 +170,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0" initial="100.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 					<cell4d:compartment id="c1" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="BPG13"/>
@@ -185,7 +182,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0" initial="100.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 					<cell4d:compartment id="c1" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="PGA3"/>
@@ -197,7 +194,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0" initial="100.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 					<cell4d:compartment id="c1" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="PGA2"/>
@@ -209,7 +206,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0" initial="100.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 					<cell4d:compartment id="c1" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="PEP"/>
@@ -220,7 +217,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 			<annotation>
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="PGK"/>
@@ -231,7 +228,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 			<annotation>
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="PGM"/>
@@ -242,7 +239,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 			<annotation>
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="ENO"/>
@@ -253,7 +250,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 			<annotation>
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c1" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="50.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="PYK"/>
@@ -265,7 +262,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 					<cell4d:compartment id="c1" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="Pyruvate"/>
@@ -277,7 +274,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 				<cell4d:listOfValidCompartments>
 					<cell4d:compartment id="c0" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 					<cell4d:compartment id="c1" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
-					<cell4d:compartment id="c2" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
+					<cell4d:compartment id="background" initial="0.0" distribution="random" xPoint="" yPoint="" zPoint="" rate=""/>
 				</cell4d:listOfValidCompartments>
 				<cell4d:listOfSpeciesTypes>
 					<cell4d:speciesType id="G3P"/>
@@ -300,15 +297,13 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 
 	<reaction id="re1" reversible="false">
 		<annotation>
-			<cell4d:reactionType>"Enzymatic"</cell4d:reactionType>
+			<cell4d:reactionType>Enzymatic</cell4d:reactionType>
 		</annotation>
 		<listOfReactants>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PGA3">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PGA3"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
@@ -318,9 +313,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PGA2">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PGA2"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
@@ -330,9 +323,7 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PGM">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PGM"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
@@ -353,39 +344,33 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 
 	<reaction id="re2" reversible="false">
 		<annotation>
-			<cell4d:reactionType>"Enzymatic"</cell4d:reactionType>
+			<cell4d:reactionType>Enzymatic</cell4d:reactionType>
 		</annotation>
 		<listOfReactants>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PGA2">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PGA2"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="PGA2"/>
+			<speciesReference species="ignored"/>
 		</listOfReactants>
 		<listOfProducts>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PEP">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PEP"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="PEP"/>
+			<speciesReference species="ignored"/>
 		</listOfProducts>
 		<listOfModifiers>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "ENO">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "ENO"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
@@ -406,39 +391,33 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 
 	<reaction id="re3" reversible="false">
 		<annotation>
-			<cell4d:reactionType>"Enzymatic"</cell4d:reactionType>
+			<cell4d:reactionType>Enzymatic</cell4d:reactionType>
 		</annotation>
 		<listOfReactants>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PEP">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PEP"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="PEP"/>
+			<speciesReference species="ignored"/>
 		</listOfReactants>
 		<listOfProducts>	
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "Pyruvate">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "Pyruvate"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="Pyruvate"/>
+			<speciesReference species="ignored"/>
 		</listOfProducts>
 		<listOfModifiers>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PYK">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PYK"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
@@ -459,39 +438,33 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 
 	<reaction id="re4" reversible="false">
 		<annotation>
-			<cell4d:reactionType>"Enzymatic"</cell4d:reactionType>
+			<cell4d:reactionType>Enzymatic</cell4d:reactionType>
 		</annotation>
 		<listOfReactants>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "BPG13">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "BPG13"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="BPG13"/>
+			<speciesReference species="ignored"/>
 		</listOfReactants>
 		<listOfProducts>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PGA3">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PGA3"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="PGA3"/>
+			<speciesReference species="ignored"/>
 		</listOfProducts>
 		<listOfModifiers>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "PGK">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "PGK"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
@@ -512,39 +485,33 @@ xmlns:cell4d="http://www.sbml.org/2017/ns/cell4d">
 
 	<reaction id="re5" reversible="false">
 		<annotation>
-			<cell4d:reactionType>"Enzymatic"</cell4d:reactionType>
+			<cell4d:reactionType>Enzymatic</cell4d:reactionType>
 		</annotation>
 		<listOfReactants>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "G3P">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "G3P"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="G3P"/>
+			<speciesReference species="ignored"/>
 		</listOfReactants>
 		<listOfProducts>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "BPG13">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "BPG13"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>
-			<speciesReference species="BPG13"/>
+			<speciesReference species="ignored"/>
 		</listOfProducts>
 		<listOfModifiers>
 			<annotation>
 				<cell4d:speciesReference>
 					<cell4d:listOfSpeciesTypes>
-						<cell4d:speciesType id = "G3PD">
-							<cell4d:bindingSite id = "None"/>
-						</cell4d:speciesType>
+						<cell4d:speciesType id = "G3PD"/>
 					</cell4d:listOfSpeciesTypes>
 				</cell4d:speciesReference>
 			</annotation>

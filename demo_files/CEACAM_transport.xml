@@ -209,7 +209,7 @@
 		<listOfCompartments>
 			<compartment id="membrane" name="001" outside="c3">
 				<annotation>
-					<cell4d:compartmentProperties type="membrane" axis="auto" face="back" membraneEmissionRate="0" absorptionRate="0"/>
+					<cell4d:compartmentProperties type="membrane" axis="x" face="back" membraneEmissionRate="0" absorptionRate="0"/>
 					<cell4d:latticePointDefinition type="solid" x1="0" y1="0" z1="0" x2="0" y2="5" z2="5"/>
 				</annotation>
 			</compartment>
@@ -239,7 +239,8 @@
 							<cell4d:bindingSite id="trans" state="U" binding=""/>
 						</cell4d:speciesType>
 					</cell4d:listOfSpeciesTypes>
-					<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="100" membraneDisplay="false"/>
+					<!-- <cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="100" membraneDisplay="false"/> -->
+					<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="100"/>
 				</annotation>
 			</species>
 			<species id="CEACAM_mono_unphos" name="CEACAM_monomer" compartment="default">
@@ -255,7 +256,8 @@
 							<cell4d:bindingSite id="trans" state="U" binding=""/>
 						</cell4d:speciesType>
 					</cell4d:listOfSpeciesTypes>
-					<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="100" membraneDisplay="false"/>
+					<cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="100"/>
+					<!-- <cell4d:displayProperties colourLabel="blue" redValue="0" greenValue="0" blueValue="100" membraneDisplay="false"/> -->
 				</annotation>
 			</species>
 			<species id="CEACAM_dimer_unphos" name="CEACAM_dimer" compartment="default">
@@ -268,17 +270,18 @@
 						<cell4d:speciesType id="CEACAM1L">
 							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
 							<cell4d:bindingSite id="ITIL1" state="U" binding=""/>
-							<cell4d:bindingSite id="cis" state="" binding="bind"/>
+							<cell4d:bindingSite id="cis" state="" binding="bound"/>
 							<cell4d:bindingSite id="trans" state="U" binding=""/>
 						</cell4d:speciesType>
 						<cell4d:speciesType id="CEACAM1L">
 							<cell4d:bindingSite id="Cal" state="" binding="unbound"/>
 							<cell4d:bindingSite id="ITIL1" state="U" binding=""/>
-							<cell4d:bindingSite id="cis" state="" binding="bind"/>
+							<cell4d:bindingSite id="cis" state="" binding="bound"/>
 							<cell4d:bindingSite id="trans" state="U" binding=""/>
 						</cell4d:speciesType>
 					</cell4d:listOfSpeciesTypes>
-					<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="90" blueValue="0" membraneDisplay="false"/>
+					<!-- <cell4d:displayProperties colourLabel="green" redValue="0" greenValue="90" blueValue="0" membraneDisplay="false"/> -->
+					<cell4d:displayProperties colourLabel="green" redValue="0" greenValue="90" blueValue="0"/>
 				</annotation>
 			</species>
 			<species id="Calmodulin_full" name="Calmodulin" compartment="default">
@@ -435,7 +438,7 @@
 					</math>
 					<listOfParameters>
 						<parameter id="r1kp" name="Kforward" value="1e7"/>
-						<parameter id="r1ub" name="unbind" value="4e-9"/>
+						<parameter id="r1ub" name="Kreverse" value="4e-9"/>
 					</listOfParameters>
 				</kineticLaw>
 			</reaction>
@@ -564,8 +567,7 @@
 					</math>
 					<listOfParameters>
 						<parameter id="r1kf" name="Kforward" value="2e1"/>
-						<parameter id="r1kr" name="Kreverse" value="2e2"/>
-						<parameter id="r1kp" name="unbind" value="2.5e-9"/>
+						<parameter id="r1kr" name="Kreverse" value="2.5e-9"/>
 					</listOfParameters>
 				</kineticLaw>
 			</reaction>
