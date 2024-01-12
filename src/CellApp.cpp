@@ -84,26 +84,29 @@ bool CellApp::OnInit() {
 }
 
 void CellApp::ShowMenu() {
-    menuFrame = new wxFrame((wxFrame *)NULL, wxID_ANY,  wxT("Cell4D Diffusion Simulation"), wxPoint(100, 100), MENU_SIZE);
+    menuFrame = new wxFrame((wxFrame *)NULL, wxID_ANY,  wxT("Cell4D Diffusion Simulation"), wxPoint(200, 200), MENU_SIZE);
         wxPanel *panel = new wxPanel(menuFrame, wxID_ANY);
             main_logo.LoadFile("assets/cell4d_sign.jpg", wxBITMAP_TYPE_JPEG);
             
             main_image = new wxStaticBitmap(panel, wxID_ANY, main_logo, wxPoint(10, 10), wxSize(250, 250));
             int text_x = 300;
 
-            heading = new wxStaticText(panel, wxID_ANY, wxT("Cell4D"), wxPoint(text_x, 50), wxSize(200, 40), wxALIGN_LEFT);
+            heading = new wxStaticText(panel, wxID_ANY, wxT("Cell4D"), wxPoint(text_x, 50), wxSize(200, 80), wxALIGN_LEFT);
             wxFont heading_font = heading->GetFont();
             heading_font.SetPointSize(40);
+            //heading_font.SetPointSize(32);
             heading_font.SetWeight(wxFONTWEIGHT_BOLD);
             heading->SetFont(heading_font);
 
-            subheading = new wxStaticText(panel, wxID_ANY, wxT("Spatio-Temporal\nModeling Platform"), wxPoint(text_x, 110), wxSize(200, 40), wxALIGN_LEFT);
+            //subheading = new wxStaticText(panel, wxID_ANY, wxT("Spatio-Temporal\nModeling Platform"), wxPoint(text_x, 110), wxSize(200, 40), wxALIGN_LEFT);
+            subheading = new wxStaticText(panel, wxID_ANY, wxT("Spatio-Temporal\nModeling Platform"), wxPoint(text_x, 110), wxSize(200, 80), wxALIGN_LEFT);
             wxFont subheading_font = subheading ->GetFont();
             subheading_font.SetPointSize(18);
+            //subheading_font.SetPointSize(13);
             subheading_font.SetWeight(wxFONTWEIGHT_NORMAL);
             subheading->SetFont(subheading_font);
 
-            version_heading = new wxStaticText(panel, wxID_ANY, wxT("version 1.0.0"), wxPoint(text_x, 170), wxSize(200, 40), wxALIGN_LEFT);
+            version_heading = new wxStaticText(panel, wxID_ANY, wxT("version 1.0.0"), wxPoint(text_x, 200), wxSize(200, 40), wxALIGN_LEFT);
             wxFont version_heading_font = version_heading->GetFont();
             version_heading_font.SetPointSize(10);
             version_heading_font.SetWeight(wxFONTWEIGHT_LIGHT);
@@ -113,18 +116,18 @@ void CellApp::ShowMenu() {
 
             MACRO_INIT(-1);
             int menu_y = 275;
-
-            demo_label = new wxStaticText(panel, wxID_ANY, wxT("Demos"), wxPoint(110, menu_y), wxSize(200, 40), wxALIGN_LEFT);
+            int menu_header_x = 100;
+            demo_label = new wxStaticText(panel, wxID_ANY, wxT("Demos"), wxPoint(menu_header_x, menu_y), wxSize(200, 40), wxALIGN_LEFT);
             wxFont label_font = demo_label->GetFont();
             label_font.SetPointSize(15);
             label_font.SetWeight(wxFONTWEIGHT_NORMAL);
             demo_label ->SetFont(label_font);
 
-            model_label = new wxStaticText(panel, wxID_ANY, wxT("Models"), wxPoint(375, menu_y), wxSize(200, 40), wxALIGN_LEFT);
+            model_label = new wxStaticText(panel, wxID_ANY, wxT("Models"), wxPoint(menu_header_x + 280, menu_y), wxSize(200, 40), wxALIGN_LEFT);
             model_label ->SetFont(label_font);
 
             menu_y += 40;
-            int left_column_x = 40;
+            int left_column_x = 35;
             int right_column_x = 310;
             BUTTON(panel, "Glycolysis",                 left_column_x, menu_y, 200, 25, CellApp::DemoGlycolysis);
             BUTTON(panel, "Workbench - Simulation",     right_column_x, menu_y, 200, 25, CellApp::SimulationFromFile);

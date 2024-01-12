@@ -19,6 +19,38 @@ This script will download all required dependencies of Cell4D and compile the so
 ## Usage
 ---
 
+
+#### Graphical mode
+
+Graphical mode can be started by running the program without --no-graphics option.
+```bash
+./simulation <file-name> <additional-options>
+```
+
+Alternatively, running the program without specifying a file will open a prompt with options to select a model file you wish to run, or open example demo files. 
+```bash
+./simulation
+```
+
+Using either option to open the selected model file will cause the simulation UI to appear.
+
+![menu](./readme_files/menu.png)
+Demos:
+
+
+The camera angle on the graphical simulation space can be freely rotated and zoomed, but not translated. Camera will always be centered on the simulation space. 
+On the sidebar on the right are the runtime options of Cell4D graphical mode. 
+
+Simulations can be freely started/paused/resumed by using the Run Simulation checkbox, the ranged input bar controls the simulation speed. 
+Particles and bulk molecules can be selectively hidden by the Display Proteins and Display Concentrations checkboxes respectively. 
+
+
+Compartments can be highlighted by Display Environment. 
+
+
+If bulk molecules exist within the simulation, they can be selectively shown with the radio boxes under Show All Metabolites.
+
+
 #### Non-graphical mode
 To run in non-graphical mode, navigate to the Cell4D folder and type
 
@@ -33,31 +65,6 @@ where <file-name> is the path to the Cell4D XML model file. A comprehensive list
 ```
 
 In this mode, no graphics will be loaded and the simulation will simply start with events such as reactions being logged in the console output. Once the simulation is completed, the model data output will be automatically generated.
-
-#### Graphical mode
-Graphical mode can be started by running the program without --no-graphics option.
-```bash
-./simulation <file-name> <additional-options>
-```
-
-Alternatively, running the program without specifying a file will open a prompt with options to select a model file you wish to run, or open example demo files. 
-```bash
-./simulation
-```
-
-Using either option to open the selected model file will cause the simulation UI to appear.
-
-The camera angle on the graphical simulation space can be freely rotated and zoomed, but not translated. Camera will always be centered on the simulation space. 
-On the sidebar on the right are the runtime options of Cell4D graphical mode. 
-
-Simulations can be freely started/paused/resumed by using the Run Simulation checkbox, the ranged input bar controls the simulation speed. 
-Particles and bulk molecules can be selectively hidden by the Display Proteins and Display Concentrations checkboxes respectively. 
-
-
-Compartments can be highlighted by Display Environment. 
-
-
-If bulk molecules exist within the simulation, they can be selectively shown with the radio boxes under Show All Metabolites.
 
 ## Input files
 ---
