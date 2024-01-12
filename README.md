@@ -50,6 +50,7 @@ Using either option to open the selected model file will cause the simulation UI
 ## Workbench launch simulation
 ---
 ![load_model_window](./readme_files/load_model_window.png)
+
 If the user opts to load their own simulation, the user will be prompted to click the "Launch Simulation" button.
 
 ## Simulation window
@@ -60,27 +61,35 @@ When the simulation is loaded, the user will be see this simulation window
 On the sidebar on the right are the runtime options of Cell4D graphical mode. 
 
 ![play](./readme_files/play.png)
+
 Simulations can be freely started/paused/stopped by using the Control Panel buttons.  Clicking on the stop button will ask the user if they wish to quit the program entirely.  
 
 ![speed](./readme_files/speed.png)
+
 The simulation speed input counter controls the simulation speed. 
 
 ![proteins](./readme_files/proteins.png)
-Particles(proteins) and bulk molecules(metabolites) can be selectively hidden by the Display Proteins and Display Concentrations checkboxes respectively. The left button selects all.  The right button deselects all.  Each particle or bulk molecule can be selected individually.
+
+Particles (proteins) and bulk molecules (metabolites) can be selectively hidden by the Display Proteins and Display Concentrations checkboxes respectively. The left radio button selects all.  The right button deselects all.  Each particle or bulk molecule can be selected individually.
+
 ![metabolites](./readme_files/metabolites.png)
+
 Particles(proteins) and bulk molecules(metabolites) are displayed separately.
 
 ![compart](./readme_files/compart.png)
+
 Compartments can be highlighted by Display Environment.  The left button selects all compartments to be highlighted. The right button deselects all compartments.  The compartments can be selected individually from the list.
 
 ![scale](./readme_files/scale.png)
+
 The camera angle on the graphical simulation space can be freely rotated and zoomed, but not translated. Camera will always be centered on the simulation space. The camera angle is rotated by dragging the simulation.  The mouse scroll wheel is used to zoom in/out of the simulation window. Unchecking each box disables their function. 
 
 ![close](./readme_files/close.png)
+
 The close button exits the simulation without saving. 
 
 
-If bulk molecules exist within the simulation, they can be selectively shown with the radio boxes under Show All Metabolites.
+
 
 
 #### Non-graphical mode
