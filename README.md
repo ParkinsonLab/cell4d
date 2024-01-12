@@ -82,14 +82,17 @@ Compartments can be highlighted by Display Environment.  The left button selects
 
 ![scale](./readme_files/scale.png)
 
-The camera angle on the graphical simulation space can be freely rotated and zoomed, but not translated. Camera will always be centered on the simulation space. The camera angle is rotated by dragging the simulation.  The mouse scroll wheel is used to zoom in/out of the simulation window. Unchecking each box disables their function. 
+The camera angle on the graphical simulation space can be freely rotated and zoomed, but not translated. Camera will always be centered on the simulation space. The camera angle is rotated by dragging the simulation.  The mouse scroll wheel is used to zoom in/out of the simulation window. Unchecking each box disables their function.  The last checkbox (Display Statistics will be explained below)
 
 ![close](./readme_files/close.png)
 
 The close button exits the simulation without saving. 
 
+![stats](./readme_files/stats.png)
 
-
+Checking the "Display Statistics" box produces a time-series chart of the relative population of each particle and/or bulk molecule.
+To choose which line to display on the graph, use the Display Proteins, and Display Metabolite checkboxes.
+ 
 
 
 #### Non-graphical mode
