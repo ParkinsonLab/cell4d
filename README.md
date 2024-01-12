@@ -33,7 +33,8 @@ This script will download all required dependencies of Cell4D and compile the so
 - Workbench - Simulation: Prompts the user to supply a SBML-compliant model file in XML
 - Open Model Editor: Launches a FireFox web browser instance to the Online Model Editor at https://compsysbio.org/cell4d_ui/build
 
-- About: 
+- About: Displays information on where to get additional help
+- License: Displays information on where to locate the license for this tool
 Graphical mode can be started by running the program without --no-graphics option.
 ```bash
 ./simulation <file-name> <additional-options>
