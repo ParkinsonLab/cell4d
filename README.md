@@ -21,6 +21,18 @@ This script will download all required dependencies of Cell4D and compile the so
 
 
 #### Graphical mode
+![menu](./readme_files/menu.png)
+## Demos
+---
+- Glycolysis: launches a glycolysis reaction simulation demo
+- Cascase: launches a cascase reaction simulation demo
+- CEACAM: launches a CEACAM reaction simulation demo
+- AB Fusion: launches an AB Fusion reaction simulation demo
+
+## Models
+---
+- Workbench - Simulation: Prompts the user to supply a SBML-compliant model file in XML
+- Open Model Editor: Launches a FireFox web browser instance to the Online Model Editor at https://compsysbio.org/cell4d_ui/build
 
 Graphical mode can be started by running the program without --no-graphics option.
 ```bash
@@ -34,8 +46,6 @@ Alternatively, running the program without specifying a file will open a prompt 
 
 Using either option to open the selected model file will cause the simulation UI to appear.
 
-![menu](./readme_files/menu.png)
-Demos:
 
 
 The camera angle on the graphical simulation space can be freely rotated and zoomed, but not translated. Camera will always be centered on the simulation space. 
