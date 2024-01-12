@@ -19,6 +19,7 @@
 #define CONTAINER_RULES
 
 #include <map>
+#include <string>
 
 using namespace std;
 
