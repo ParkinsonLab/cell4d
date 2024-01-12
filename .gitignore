@@ -10,3 +10,5 @@ vscode/
 
 gmon\.out
 /CellApp
+
+Makefile_win64

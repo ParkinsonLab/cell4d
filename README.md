@@ -1,20 +1,21 @@
 # Cell4D
 ---
 
-Cell4D is a C++\-based graphical spatial stochatic cell simulator capable of simulating a wide variety of cellular pathways. Molecules are simulated as particles within a user-defined simulation space under a Smoluchowski-based reaction-diffusion system on a static time-step basis. At each timestep, particles will diffuse under Brownian-like motion and any potential reactions between molecules will be resolved. Simulation space is divided into cubic sub-partitions called c-voxels, groups of these c-voxels can be used to define spatial compartments that can have optional rules that govern particle permeability, and reactions can be compartment-specific as well.
+Cell4D is a Linux-and-MacOS C++\-based graphical spatial stochatic cell simulator capable of simulating a wide variety of cellular pathways. Molecules are simulated as particles within a user-defined simulation space under a Smoluchowski-based reaction-diffusion system on a static time-step basis. At each timestep, particles will diffuse under Brownian-like motion and any potential reactions between molecules will be resolved. Simulation space is divided into cubic sub-partitions called c-voxels, groups of these c-voxels can be used to define spatial compartments that can have optional rules that govern particle permeability, and reactions can be compartment-specific as well.
 
 The program can be run in a graphical mode where the user can view the simulation state as it is being modelled, or a non-graphical mode if only the model data output is desired. Data output includes a count table for all molecules in each compartment in a .tsv format, JSON particle position logs that record the position and state of all particles at regular time-step intervals, as well as intermediate JSON checkpoint files that can be used to resume simulations without needing to start over from the beginning.
 
 ## Installation
 ---
 
-This program can be run on MacOS or Linux systems. To install, navigate to the directory containing the Cell4D files and type:
+This program can be run on MacOS or Linux systems only. To install, navigate to the directory containing the Cell4D files and type:
 
 ```bash
 ./build_and_run.sh
 ```
 
-This script will download all required dependencies of Cell4D and compile the source files into an executable named "simulation"
+This script will download all required dependencies of Cell4D and compile the source files into an executable named "simulation".
+
 
 ## Usage
 ---
@@ -22,18 +23,17 @@ This script will download all required dependencies of Cell4D and compile the so
 
 #### Graphical mode
 ![menu](./readme_files/menu.png)
-## Demos
+## Menu Options
 ---
 - Glycolysis: launches a glycolysis reaction simulation demo
 - Cascase: launches a cascase reaction simulation demo
 - CEACAM: launches a CEACAM reaction simulation demo
 - AB Fusion: launches an AB Fusion reaction simulation demo
 
-## Models
----
 - Workbench - Simulation: Prompts the user to supply a SBML-compliant model file in XML
 - Open Model Editor: Launches a FireFox web browser instance to the Online Model Editor at https://compsysbio.org/cell4d_ui/build
 
+- About: 
 Graphical mode can be started by running the program without --no-graphics option.
 ```bash
 ./simulation <file-name> <additional-options>
