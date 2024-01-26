@@ -32,7 +32,7 @@ string compart_particle_out_name = "compart_container_stats.tsv";
 string checkpoint_out_name = "checkpoint";
 string config_path = "none";
 int checkpoint_every_timestep = 25000;
-string model_editor_command = "firefox http://compsysbio.org/cell4d";
+string model_editor_command = "firefox https://compsysbio.org/cell4d";
 bool graphics = true;
 bool multi_out = false;
 
