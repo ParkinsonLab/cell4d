@@ -8,13 +8,21 @@ The program can be run in a graphical mode where the user can view the simulatio
 ## Installation
 ---
 
-This program can be run on MacOS or Linux systems only. To install, navigate to the directory containing the Cell4D files and type:
+This program can be run on MacOS or Linux systems only. To install for Ubuntu, navigate to the directory containing the Cell4D files and type:
 
 ```bash
+./install_ubuntu.sh 
 ./build_and_run.sh
 ```
 
-This script will download all required dependencies of Cell4D and compile the source files into an executable named "simulation".
+To install for MacOS, use:
+
+```bash
+./install_macos.sh
+./build_and_run.sh
+```
+
+This script will download all required dependencies of Cell4D and compile the source files into an executable named "Cell4D".
 
 
 ## Usage
@@ -35,14 +43,45 @@ This script will download all required dependencies of Cell4D and compile the so
 
 - About: Displays information on where to get additional help
 - License: Displays information on where to locate the license for this tool
-Graphical mode can be started by running the program without --no-graphics option.
-```bash
-./simulation <file-name> <additional-options>
-```
 
-Alternatively, running the program without specifying a file will open a prompt with options to select a model file you wish to run, or open example demo files. 
+## Usage options 
+---
+To run Cell4D, navigate to the repository folder, and enter:
 ```bash
-./simulation
+./Cell4D <model> <sim-parameters> <flags>
+```
+The parameters are described below:
+```bash
+where <model> is a cell4D formatted XML file, and <sim-parameters> include:
+	--check-in or --checkpoint: checkpointed molecule file from previous cell4D runs, formatted as json.
+	--whole-particle-output: name of particle count .tsv at each time step. default: total_container_stats.tsv
+	--compartment-particle-output: name of particle count file for each compartment. default: compart_container_stats.tsv
+	--whole-bulk-output: name of bulk count .tsv at each time step. default: total_bulk_stats.tsv
+	--compartment-bulk-output: name of bulk count file for each compartment. default: compart_bulk_stats.tsv
+	--check-out or --checkpoint-output: name of checkpoint file created. default: checkpoint
+	--checkpoint-timesteps: timestep interval for regular checkpointing. default: 25000
+	--timestep: number of time cycles to run this simulation, overrides MAX_CYCLES field in model.
+	--timescale: timestep length (seconds) to use in this simulation, overrides TIMESCALE field in model.
+	--seed: simulation seed to use for RNG.
+<flags> are:
+	--no-graphics: turns off graphical display of simulation.
+	--multi: compartmental molecule output will be separate files by compartment rather than long concatenated file
+<sim-parameters> can be called as "--parameter_name" value OR "--parameter_name=value"
+	
+Experimental features:
+	--poslog-out: name of molecule position log output
+	--poslog-comparts: name of compartment of logged molecule positions
+	--poslog-interval: interval of molecule log recordings, default at 500
+```
+Leaving the model, sim-parameters, and flags unfilled will launch Cell4D into GUI-mode.
+To explicitly invoke No-Graphics mode, use:
+```bash
+./Cell4D <model> <sim-parameters> <flags> --no-graphics
+``` 
+
+To access the help display, and show the full options:
+```bash
+./Cell4D -h
 ```
 
 Using either option to open the selected model file will cause the simulation UI to appear.
@@ -99,13 +138,13 @@ To choose which line to display on the graph, use the Display Proteins, and Disp
 To run in non-graphical mode, navigate to the Cell4D folder and type
 
 ```bash
-./simulation <file-name> --no-graphics <additional-options>
+./Cell4D <file-name> --no-graphics <additional-options>
 ```
 
 where <file-name> is the path to the Cell4D XML model file. A comprehensive list of run options can be found with:
 
 ```bash
-./simulation --help
+./Cell4D --help
 ```
 
 In this mode, no graphics will be loaded and the simulation will simply start with events such as reactions being logged in the console output. Once the simulation is completed, the model data output will be automatically generated.

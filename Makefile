@@ -7,8 +7,8 @@ else
 endif
 
 
-PROG=CellApp
-
+#PROG=CellApp
+PROG=Cell4D
 REDIR_OBJS=\
 	$(OBJ_DIR)SimEngine.o \
 	$(OBJ_DIR)Simulation.o \
@@ -107,4 +107,4 @@ $(OBJ_DIR)Simulation.o: $(SRC_DIR)Simulation.cpp $(INC_DIR)Simulation.h
 
 
 clean:
-	rm -f $(OBJ_DIR)*.o CellApp
+	rm -f $(OBJ_DIR)*.o Cell4D
