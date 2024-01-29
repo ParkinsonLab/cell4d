@@ -34,7 +34,7 @@ This script will download all required dependencies of Cell4D and compile the so
 ## Menu Options
 ---
 - Glycolysis: launches a glycolysis reaction simulation demo
-- Cascase: launches a cascase reaction simulation demo
+- Cascade: launches a cascade reaction simulation demo
 - CEACAM: launches a CEACAM reaction simulation demo
 - AB Fusion: launches an AB Fusion reaction simulation demo
 
