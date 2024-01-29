@@ -5,10 +5,16 @@ Cell4D is a Linux-and-MacOS C++\-based graphical spatial stochatic cell simulato
 
 The program can be run in a graphical mode where the user can view the simulation state as it is being modelled, or a non-graphical mode if only the model data output is desired. Data output includes a count table for all molecules in each compartment in a .tsv format, JSON particle position logs that record the position and state of all particles at regular time-step intervals, as well as intermediate JSON checkpoint files that can be used to resume simulations without needing to start over from the beginning.
 
+
+## Disclaimer
+---
+Note: This program has been tested only on Ubuntu 20.04, and Ubuntu 22.04.  Please report any issues with the software to https://github.com/ParkinsonLab/cell4d/issues
+
 ## Installation
 ---
 
 This program can be run on MacOS or Linux systems only. To install for Ubuntu, navigate to the directory containing the Cell4D files and type:
+
 
 ```bash
 ./install_ubuntu.sh 
