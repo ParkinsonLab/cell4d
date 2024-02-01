@@ -1,0 +1,28 @@
+Demo models
+
+Four demo models are included with the base Cell4D install, and each of the demos can be selected to be run by clicking on their respective buttons on the UI. As the simulation runs, the number of molecules present at each timestep is recorded, and a table of the molecules overtime is saved as output at the end of a simulation run.
+
+
+AB_fusion_demo.xml
+A cubic simulation space with two particle species A and B, 500 particles each, evenly dispersed throughout. The two particles can undergo an irriversible irriversible reaction to combine and form an AB dimer particle.
+
+This demo shows an example of how particles can both freely diffuse within a space and react with other particles.
+
+
+Cascade.xml
+A hypothetical cascading reaction chain with particle species A, B, C, D, and a "product" that is originally bound to D particles. At the beginning of the simulation, particles A are initialized in the corner of the simulation space while other particles are randomly distributed across. The list of possible reactions are as follows:
+
+A + B(u) -> A + B(p)
+B + C(u) -> B + C(p)
+C + D-product -> C + D + product
+
+When A reacts with an unphosphorylated B particle, it is phosphorylated, causing it to turn into B(p) which allows it to next react with C(u). Then the produced C(p) can react with the D-product dimer to release the product particle.
+
+
+Glycolysis_V5.xml
+A partial model of the glycolysis reaction chain involving PGK, PGM, ENO, PYK, and G3PD enzymes modelled as particles, and BPG13, PGA3, PGA2, PEPPyruvate, and G3P modelled as bulk molecules. 
+
+
+CEACAM_transport.xml
+
+A simplified model of CEACAM1 proteins being transported between the interior of a cell to the cell membrane via the combination of exocytosis and endocytosis processes, using the "events" feature of Cell4D. 
