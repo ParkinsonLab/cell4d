@@ -50,6 +50,8 @@ This script will download all required dependencies of Cell4D and compile the so
 - About: Displays information on where to get additional help
 - License: Displays information on where to locate the license for this tool
 
+Further details on the demo options are provided in the ‘demo_description.txt’ in the ‘demo_files’ directory on the site GitHub.
+
 ## Usage options 
 ---
 To run Cell4D, navigate to the repository folder, and enter:
