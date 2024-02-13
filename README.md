@@ -13,18 +13,11 @@ Note: This program has been tested only on Ubuntu 20.04, and Ubuntu 22.04.  Plea
 ## Installation
 ---
 
-This program can be run on MacOS or Linux systems only. To install for Ubuntu, navigate to the directory containing the Cell4D files and type:
+This program can be run on Linux systems only. To install for Ubuntu, navigate to the directory containing the Cell4D files and type:
 
 
 ```bash
 ./install_ubuntu.sh 
-./build_and_run.sh
-```
-
-To install for MacOS, use:
-
-```bash
-./install_macos.sh
 ./build_and_run.sh
 ```
 
